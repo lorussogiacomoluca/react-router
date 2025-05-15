@@ -1,0 +1,6 @@
+.card-shadow:hover {
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.5);
+  transform: translateY(-2px);
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}

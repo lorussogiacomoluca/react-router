@@ -7,7 +7,7 @@ const Card = ({ posts }) => {
         <div className="row">
           {posts.map((post, index) => (
             <div key={index} className="col-12 col-md-6 col-lg-4 mb-4">
-              <div className="card">
+              <div className="card card-shadow">
                 <div className="card-body">
                   <h5 className="card-title">
                     <a
@@ -26,7 +26,7 @@ const Card = ({ posts }) => {
                   </h6>
                   <p className="card-text">
                     {post.body.length > 100
-                      ? post.body.substring(0, 100) + "..."
+                      ? post.body.substring(0, 80) + "..."
                       : post.body}
                   </p>
                   <div className="card-footer d-flex justify-content-between">
