@@ -1,13 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
+import Pagination from "../components/Pagination";
+import PostPerPage from "../components/PostPerPage";
 
 const Posts = () => {
-  const endpoint = "https://dummyjson.com/posts";
+  const [pagination, setPagination] = useState(1);
+  const [postPerPage, setPostperPage] = useState(0);
+  const calcEndpoint = () => {
+    const limit = postPerPage;
+    const skip = (pagination - 1) * postPerPage;
+    return `https://dummyjson.com/posts?limit=${limit}&skip=${skip}`;
+  };
+
+  // const endpoint = "https://dummyjson.com/posts?limit=0&skip=0";
   const [posts, setPosts] = useState([]);
   const getData = () => {
     axios
-      .get(endpoint)
+      .get(calcEndpoint())
       .then((response) => {
         console.log(response.data.posts);
         setPosts(response.data.posts);
@@ -17,12 +27,15 @@ const Posts = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [pagination, postPerPage]);
 
   return (
     <div>
-      <h1>Posts</h1>
-
+      <div className="d-flex justify-content-between">
+        <h1>Posts</h1>
+        <Pagination pagination={pagination} setPagination={setPagination} />
+        <PostPerPage setPostperPage={setPostperPage} />
+      </div>
       <Card posts={posts} />
     </div>
   );
