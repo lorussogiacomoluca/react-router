@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Card from "../components/Card";
 
 const Posts = () => {
+  const endpoint = "https://dummyjson.com/posts";
   const [posts, setPosts] = useState([]);
   const getData = () => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get(endpoint)
       .then((response) => {
-        console.log(response.data);
-        setPosts(response.data);
+        console.log(response.data.posts);
+        setPosts(response.data.posts);
       })
       .catch((error) => console.error(error));
   };
@@ -20,9 +22,8 @@ const Posts = () => {
   return (
     <div>
       <h1>Posts</h1>
-      {posts.map((post, index) => (
-        <h5 key={post.id}>{post.title}</h5>
-      ))}
+
+      <Card posts={posts} />
     </div>
   );
 };
