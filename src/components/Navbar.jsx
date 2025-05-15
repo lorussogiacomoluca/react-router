@@ -6,13 +6,19 @@ const Navbar = () => {
     return isActive ? "nav-link active" : "nav-link";
   };
 
+  const links = [
+    { name: "Homepage", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Posts", path: "/posts" },
+  ];
+
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
           <h2 className="text-warning me-4">Simple Dark Blog</h2>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -20,25 +26,17 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <NavLink className={checkIsActive} to="/">
-                  Home
-                </NavLink>
-              </li>
-              <li class="nav-item">
-                <NavLink className={checkIsActive} to="/about">
-                  About
-                </NavLink>
-              </li>
-              <li class="nav-item">
-                <NavLink className={checkIsActive} to="/posts">
-                  Posts
-                </NavLink>
-              </li>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              {links.map((link) => (
+                <li key={link.name} className="nav-item">
+                  <NavLink className={checkIsActive} to={link.path}>
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
