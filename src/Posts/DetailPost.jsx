@@ -102,7 +102,7 @@ const DetailPost = () => {
           </nav>
         </div>
       </div>
-      <Comments />
+      <Comments postId={id} />
     </div>
   );
 };
