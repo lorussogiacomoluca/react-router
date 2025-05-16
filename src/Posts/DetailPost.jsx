@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
+import Comments from "./Comments";
 
 const DetailPost = () => {
   //Save id params in id variable
@@ -101,6 +102,7 @@ const DetailPost = () => {
           </nav>
         </div>
       </div>
+      <Comments />
     </div>
   );
 };

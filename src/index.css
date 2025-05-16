@@ -12,3 +12,12 @@
 .text-warning-emphasis {
   text-decoration: none;
 }
+
+.badge-soft-warning {
+  background-color: #36352f;
+  color: #8a6d1a;
+}
+
+.profile-img {
+  width: 40px;
+}

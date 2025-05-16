@@ -22,7 +22,7 @@ const Sidebar = () => {
         <div className="col">
           {allTags.map((tag) => (
             <NavLink to={`/posts/tag/${tag.slug}`} key={tag.slug}>
-              <span className="badge text-bg-warning me-2">{tag.name}</span>
+              <span className="badge badge-soft-warning  me-2">{tag.name}</span>
             </NavLink>
           ))}
         </div>
