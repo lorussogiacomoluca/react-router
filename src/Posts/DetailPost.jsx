@@ -1,17 +1,29 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const DetailPost = () => {
   //Save id params in id variable
   const { id } = useParams();
-  // Creazione variaible di stato
+  //Endpoint with ID
+  const endpoint = `https://dummyjson.com/posts/${id}`;
+  //Creazione variaible di stato
   const [post, setPost] = useState({});
+  //Create getSinglePost function by AJAX call
+  const getSinglePost = () => {
+    axios
+      .get(endpoint)
+      .then((response) => {
+        setPost(response.data);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => getSinglePost(), []);
 
   return (
     <div>
-      <h1>Post Detail</h1>
-      <h5>{id}</h5>
+      <h1>{post.title}</h1>
     </div>
   );
 };
