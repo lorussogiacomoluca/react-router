@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Posts from "./Posts/Posts";
 import "./index.css";
 import DefaultLayout from "./Layouts/DefaultLayout";
+import DetailPost from "./Posts/DetailPost";
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<Posts />} />
+          <Route path="/posts">
+            <Route index element={<Posts />} />
+            <Route path=":id" element={<DetailPost />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
