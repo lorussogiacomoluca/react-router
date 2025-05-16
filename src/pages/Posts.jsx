@@ -19,7 +19,6 @@ const Posts = () => {
     axios
       .get(calcEndpoint())
       .then((response) => {
-        console.log(response.data.posts);
         setPosts(response.data.posts);
       })
       .catch((error) => console.error(error));
@@ -33,7 +32,12 @@ const Posts = () => {
     <div>
       <div className="d-flex justify-content-between">
         <h1>Posts</h1>
-        <Pagination pagination={pagination} setPagination={setPagination} />
+        <Pagination
+          pagination={pagination}
+          setPagination={setPagination}
+          postPerPage={postPerPage}
+          setPostperPage={setPostperPage}
+        />
         <PostPerPage setPostperPage={setPostperPage} />
       </div>
       <Card posts={posts} />

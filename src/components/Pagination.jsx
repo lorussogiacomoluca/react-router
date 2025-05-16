@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import PostPerPage from "./PostPerPage";
 
-const Pagination = ({ pagination, setPagination }) => {
+const Pagination = ({
+  pagination,
+  setPagination,
+  postPerPage,
+  setPostPerPage,
+}) => {
+  useEffect(() => {
+    if (postPerPage === 0) {
+      setPagination(1);
+    }
+  }, [postPerPage]);
+
   return (
     <>
       <nav aria-label="...">
@@ -31,7 +43,11 @@ const Pagination = ({ pagination, setPagination }) => {
               {pagination}
             </a>
           </li>
-          <li className={pagination === 42 ? "d-none" : "page-item"}>
+          <li
+            className={
+              pagination === 42 || postPerPage === 0 ? "d-none" : "page-item"
+            }
+          >
             <a
               className="page-link"
               href="#"
@@ -43,7 +59,7 @@ const Pagination = ({ pagination, setPagination }) => {
           <li className="page-item">
             <a
               className={
-                pagination === 42
+                pagination === 42 || postPerPage === 0
                   ? "page-link disabled"
                   : "page-link cursor-pointer"
               }
