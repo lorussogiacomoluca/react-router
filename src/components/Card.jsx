@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Card = ({ posts }) => {
   return (
@@ -30,9 +31,11 @@ const Card = ({ posts }) => {
                       : post.body}
                   </p>
                   <div className="">
-                    <button className="btn btn-warning w-100">
-                      Leggi l'articolo
-                    </button>
+                    <NavLink to={`/posts/${post.id}`}>
+                      <button className="btn btn-warning w-100">
+                        Leggi l'articolo
+                      </button>
+                    </NavLink>
                   </div>
                   <div className="card-footer d-flex justify-content-between mt-3">
                     <button type="button" className="btn btn-outline-success">

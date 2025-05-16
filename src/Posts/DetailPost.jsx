@@ -7,6 +7,7 @@ const DetailPost = () => {
   return (
     <div>
       <h1>Post Detail</h1>
+      <h5>{id}</h5>
     </div>
   );
 };
