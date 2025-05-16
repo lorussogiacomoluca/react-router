@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const DetailPost = () => {
   //Save id params in id variable
@@ -19,7 +19,9 @@ const DetailPost = () => {
       .catch((error) => console.error(error));
   };
 
-  useEffect(() => getSinglePost(), []);
+  const navigate = useNavigate();
+
+  useEffect(() => getSinglePost(), [id]);
 
   return (
     <div>
@@ -49,13 +51,42 @@ const DetailPost = () => {
           <button type="button" className="btn btn-outline-success">
             <i className="fa-solid fa-thumbs-up me-2"></i>
             <span className="badge text-bg-success">
-              {post.reactions.likes}
+              {post.reactions?.likes}
             </span>
           </button>
           <button type="button" className="btn btn-outline-danger">
             <i className="fa-solid fa-thumbs-down me-2"></i>
-            <span className="badge text-bg-danger">{post.reactions.likes}</span>
+            <span className="badge text-bg-danger">
+              {post.reactions?.likes}
+            </span>
           </button>
+        </div>
+      </div>
+      <div className="row  mt-4">
+        <div className="col-12 d-flex justify-content-center">
+          <nav>
+            <ul className="pagination">
+              <li
+                className={post.id === 1 ? "page-item disabled" : "page-item"}
+                onClick={() => navigate(`/posts/${parseInt(post.id) - 1}`)}
+              >
+                <p
+                  className={
+                    post.id === 1 ? "page-link" : "text-warning page-link "
+                  }
+                >
+                  Previous Post
+                </p>
+              </li>
+
+              <li
+                className="page-item"
+                onClick={() => navigate(`/posts/${parseInt(post.id) + 1}`)}
+              >
+                <p className="page-link text-warning">Next Post</p>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
