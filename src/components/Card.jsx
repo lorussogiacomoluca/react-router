@@ -29,7 +29,12 @@ const Card = ({ posts }) => {
                       ? post.body.substring(0, 80) + "..."
                       : post.body}
                   </p>
-                  <div className="card-footer d-flex justify-content-between">
+                  <div className="">
+                    <button className="btn btn-warning w-100">
+                      Leggi l'articolo
+                    </button>
+                  </div>
+                  <div className="card-footer d-flex justify-content-between mt-3">
                     <button type="button" className="btn btn-outline-success">
                       <i className="fa-solid fa-thumbs-up me-2"></i>
                       <span className="badge text-bg-success">
