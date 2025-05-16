@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 
 const DetailPost = () => {
   //Save id params in id variable
@@ -31,9 +31,13 @@ const DetailPost = () => {
       <div className="row">
         <h6 className="card-subtitle mb-2 text-body-secondary d-flex gap-3">
           {post.tags?.map((tag) => (
-            <p className="text-warning-emphasis" key={tag}>
-              {tag}
-            </p>
+            <NavLink
+              to={`/posts/tag/${tag}`}
+              key={tag}
+              className="text-warning-emphasis text-decoration-none"
+            >
+              <span>{tag}</span>
+            </NavLink>
           ))}
         </h6>
       </div>
@@ -67,12 +71,18 @@ const DetailPost = () => {
           <nav>
             <ul className="pagination">
               <li
-                className={post.id === 1 ? "page-item disabled" : "page-item"}
+                className={
+                  post.id === 1
+                    ? "page-item disabled"
+                    : "page-item cursor-pointer"
+                }
                 onClick={() => navigate(`/posts/${parseInt(post.id) - 1}`)}
               >
                 <p
                   className={
-                    post.id === 1 ? "page-link" : "text-warning page-link "
+                    post.id === 1
+                      ? "page-link"
+                      : "text-warning page-link cursor-pointer"
                   }
                 >
                   Previous Post
@@ -83,7 +93,9 @@ const DetailPost = () => {
                 className="page-item"
                 onClick={() => navigate(`/posts/${parseInt(post.id) + 1}`)}
               >
-                <p className="page-link text-warning">Next Post</p>
+                <p className="page-link text-warning cursor-pointer">
+                  Next Post
+                </p>
               </li>
             </ul>
           </nav>

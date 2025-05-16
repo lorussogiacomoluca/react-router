@@ -20,9 +20,13 @@ const Card = ({ posts }) => {
                   </h5>
                   <h6 className="card-subtitle mb-2 text-body-secondary d-flex gap-3">
                     {post.tags.map((tag) => (
-                      <p className="text-warning-emphasis" key={tag}>
-                        {tag}
-                      </p>
+                      <NavLink
+                        to={`/posts/tag/${tag}`}
+                        key={tag}
+                        className="text-warning-emphasis text-decoration-none"
+                      >
+                        <span>{tag}</span>
+                      </NavLink>
                     ))}
                   </h6>
                   <p className="card-text">

@@ -8,3 +8,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.text-warning-emphasis {
+  text-decoration: none;
+}
